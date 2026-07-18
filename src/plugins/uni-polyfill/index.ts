@@ -13,7 +13,6 @@ export default function VitePlugin(options?: UserOptions): Plugin {
     enforce: 'post',
     config(config) {
       ctx.root = normalizePath(config.root || process.cwd())
-      ctx.minify = config.build?.minify || 'terser'
     },
     buildEnd() {
       logGlobalPolyfills(ctx)

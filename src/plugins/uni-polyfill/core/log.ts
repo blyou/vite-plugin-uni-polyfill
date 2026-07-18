@@ -130,9 +130,9 @@ export function logPolyfillsDiff(code: string, id: string, ctx: Context) {
 
   const file = pc.underline(id.replace(`${ctx.root}/`, '').split('?')[0])
   log(`${pc.cyan('[vite-plugin-uni-polyfill]')} ${file} polyfill 变更:`)
-  globalAdded.forEach(i => log(pc.green(`  + ${formatPolyfillName(i)}`)))
+  globalAdded.forEach(i => log(pc.green(` ++ ${formatPolyfillName(i)}`)))
   fileAdded.forEach(i => log(pc.white(`  + ${formatPolyfillName(i)}`)))
-  globalRemoved.forEach(i => log(pc.red(`  - ${formatPolyfillName(i)}`)))
+  globalRemoved.forEach(i => log(pc.red(` -- ${formatPolyfillName(i)}`)))
   fileRemoved.forEach(i => log(pc.white(`  - ${formatPolyfillName(i)}`)))
   unchanged.forEach(i => log(pc.dim(`    ${formatPolyfillName(i)}`)))
 }
