@@ -1,5 +1,5 @@
 {
-  "name": "vite-plugin-uni-polyfill",
+  "name": "@blyou/vite-plugin-uni-polyfill",
   "version": "0.0.0",
   "description": "A Vite plugin that auto-injects core-js polyfills on demand for uni-app.",
   "keywords": [
@@ -33,6 +33,9 @@
       "require": "./dist/index.cjs"
     },
     "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "build": "tsdown",
