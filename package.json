@@ -1,0 +1,95 @@
+{
+  "name": "vite-plugin-uni-polyfill",
+  "version": "0.0.0",
+  "description": "A Vite plugin that auto-injects core-js polyfills on demand for uni-app.",
+  "keywords": [
+    "core-js",
+    "plugin",
+    "polyfill",
+    "uni-app",
+    "uniapp",
+    "vite"
+  ],
+  "homepage": "https://github.com/blyou/vite-plugin-uni-polyfill#readme",
+  "bugs": {
+    "url": "https://github.com/blyou/vite-plugin-uni-polyfill/issues"
+  },
+  "license": "MIT",
+  "author": "blyou <youbolincode@163.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blyou/vite-plugin-uni-polyfill.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit",
+    "release": "bumpp",
+    "prepublishOnly": "pnpm run build",
+    "lint": "run-s lint:*",
+    "lint:oxlint": "oxlint . --fix",
+    "lint:eslint": "eslint . --fix --cache",
+    "format": "oxfmt src/",
+    "git:hooks": "pnpm simple-git-hooks",
+    "taze": "pnpx taze -I"
+  },
+  "dependencies": {
+    "@babel/core": "^8.0.1",
+    "@rollup/plugin-commonjs": "^29.0.3",
+    "babel-plugin-polyfill-corejs3": "^1.0.0",
+    "mlly": "^1.8.2",
+    "picocolors": "^1.1.1",
+    "picomatch": "^4.0.5"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^21.2.1",
+    "@commitlint/config-conventional": "^21.2.0",
+    "@commitlint/types": "^21.2.0",
+    "@types/node": "^26.1.1",
+    "@types/picomatch": "^4.0.3",
+    "@typescript/native-preview": "7.0.0-dev.20260707.2",
+    "@vue/eslint-config-typescript": "^14.9.0",
+    "bumpp": "^11.1.0",
+    "eslint": "^10.7.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-oxlint": "^1.73.0",
+    "eslint-plugin-vue": "^10.9.2",
+    "lint-staged": "^17.0.8",
+    "npm-run-all2": "^9.0.2",
+    "oxfmt": "^0.59.0",
+    "oxlint": "^1.74.0",
+    "simple-git-hooks": "^2.13.1",
+    "tsdown": "^0.22.8",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.10"
+  },
+  "peerDependencies": {
+    "core-js": "^3.0.0",
+    "terser": "^5.0.0",
+    "vite": ">=5.0.0 <8.0.0"
+  },
+  "peerDependenciesMeta": {
+    "vite": {
+      "optional": true
+    },
+    "terser": {
+      "optional": true
+    }
+  },
+  "packageManager": "pnpm@11.13.1+sha512.b2fc7683b8a6525414e7d13e1ba28caaddde96bf66ec540bfaeb7e702b81f3e0be4d1f295edf7f9fe0396740a8dce4509c582ddf79891f4543fea32d37645f25"
+}
