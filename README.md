@@ -11,15 +11,16 @@
 
 ## 安装方式
 
+pnpm
+
 ```bash
-# pnpm
-pnpm add -D vite-plugin-uni-polyfill
+pnpm add -D @blyou/vite-plugin-uni-polyfill
+```
 
-# npm
-npm install -D vite-plugin-uni-polyfill
+npm
 
-# yarn
-yarn add -D vite-plugin-uni-polyfill
+```bash
+npm install -D @blyou/vite-plugin-uni-polyfill
 ```
 
 > **pnpm 用户注意**：本插件在运行期需要解析 `@babel/core`、`@rollup/plugin-commonjs` 等依赖。pnpm 默认的严格（非扁平）`node_modules` 结构可能导致这些依赖无法从插件位置正确解析，从而构建报错。请在项目根目录的 `.npmrc` 中开启扁平提升：
@@ -64,10 +65,10 @@ yarn add -D vite-plugin-uni-polyfill
 ```ts
 // vite.config.ts
 import { defineConfig } from 'vite'
-import uniPolyfill from 'vite-plugin-uni-polyfill'
+import Polyfill from '@blyou/vite-plugin-uni-polyfill'
 
 export default defineConfig({
-  plugins: [uniPolyfill()],
+  plugins: [Polyfill()],
 })
 ```
 
@@ -75,11 +76,11 @@ export default defineConfig({
 
 ```ts
 import { defineConfig } from 'vite'
-import uniPolyfill from 'vite-plugin-uni-polyfill'
+import Polyfill from '@blyou/vite-plugin-uni-polyfill'
 
 export default defineConfig({
   plugins: [
-    uniPolyfill({
+    Polyfill({
       // 兼容到 iOS Safari 14 / Chrome 90
       targets: ['ios >= 14', 'chrome >= 90'],
     }),
@@ -91,11 +92,11 @@ export default defineConfig({
 
 ```ts
 import { defineConfig } from 'vite'
-import uniPolyfill from 'vite-plugin-uni-polyfill'
+import Polyfill from '@blyou/vite-plugin-uni-polyfill'
 
 export default defineConfig({
   plugins: [
-    uniPolyfill({
+    Polyfill({
       // 强制保留数组相关垫片（哪怕目标环境已支持）
       include: ['es.array.*'],
       // 排除 Promise 相关垫片
@@ -109,11 +110,11 @@ export default defineConfig({
 
 ```ts
 import { defineConfig } from 'vite'
-import uniPolyfill from 'vite-plugin-uni-polyfill'
+import Polyfill from '@blyou/vite-plugin-uni-polyfill'
 
 export default defineConfig({
   plugins: [
-    uniPolyfill({
+    Polyfill({
       log: 'global', // 构建结束时打印全部注入的 polyfill 及其体积
     }),
   ],
