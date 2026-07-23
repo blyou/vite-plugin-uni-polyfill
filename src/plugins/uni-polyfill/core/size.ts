@@ -2,7 +2,7 @@ import { build, type Rollup } from 'vite'
 import { minify } from 'terser'
 import { gzipSync } from 'node:zlib'
 import { writeFileSync, unlinkSync, mkdirSync } from 'node:fs'
-import path from 'node:path'
+import { join } from 'node:path'
 import { log } from 'node:console'
 import pc from 'picocolors'
 import type { Context } from './context.type'
@@ -51,9 +51,9 @@ export async function computePolyfillSizes(specifiers: Iterable<string>, ctx: Co
 
   // 落盘一个入口文件导入全部 polyfill，交由 vite 走真实生产打包管线。
   // 遵循 npm 包缓存文件规范，写入项目根的 node_modules/.cache/<pkg>/ 目录。
-  const cacheDir = path.join(ctx.root, 'node_modules', '.cache', 'vite-plugin-uni-polyfill')
+  const cacheDir = join(ctx.root, 'node_modules', '.cache', 'vite-plugin-uni-polyfill')
   mkdirSync(cacheDir, { recursive: true })
-  const entryFile = path.join(cacheDir, `uni-polyfill-entry-${process.pid}-${Date.now()}.mjs`)
+  const entryFile = join(cacheDir, `uni-polyfill-entry-${process.pid}-${Date.now()}.mjs`)
   writeFileSync(entryFile, entries.map(p => `import ${JSON.stringify(p)}`).join('\n'))
 
   let size = 0
