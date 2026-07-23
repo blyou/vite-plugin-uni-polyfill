@@ -11,8 +11,8 @@ export default function VitePlugin(options?: UserOptions): Plugin {
   return {
     name: 'vite-plugin-uni-polyfill',
     enforce: 'post',
-    config(config) {
-      ctx.root = normalizePath(config.root || process.cwd())
+    configResolved(config) {
+      ctx.root = normalizePath(config.root)
     },
     buildEnd() {
       logGlobalPolyfills(ctx)
