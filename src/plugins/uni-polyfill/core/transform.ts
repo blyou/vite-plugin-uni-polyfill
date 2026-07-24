@@ -20,7 +20,7 @@ const replace_new_URL: PluginTarget = ({ types: t }) => ({
   },
 })
 
-function injectPolyfill(code: string, id: string, { options, root }: Context) {
+function injectPolyfill(code: string, id: string, { options }: Context) {
   const plugins: PluginItem[] = [
     // polyfill-corejs3 会自动注入 core-js 的 polyfill
     // https://github.com/babel/babel-polyfills/blob/main/docs/usage.md
@@ -43,7 +43,7 @@ function injectPolyfill(code: string, id: string, { options, root }: Context) {
   if (options.platform === 'mp-weixin') plugins.push(replace_new_URL)
 
   return transformSync(code, {
-    cwd: root,
+    cwd: import.meta.dirname,
     sourceMaps: true,
     sourceFileName: id,
     plugins,
